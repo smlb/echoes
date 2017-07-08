@@ -1,0 +1,204 @@
+# http://i3wm.org/docs/userguide.html
+
+set $mod Mod4
+
+font pango:Monospace, FontAwesome 9
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #B6C2C3 #2e9ef4   #285577
+client.focused_inactive #333333 #121212 #B6C2C3 #484e50   #121212
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #B6C2C3 #900000   #900000
+client.placeholder      #000000 #0c0c0c #B6C2C3 #000000   #0c0c0c
+client.background       #121212
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+new_window 1pixel 
+new_float 1pixel
+
+bindsym $mod+Return exec --no-startup-id termite 
+bindsym $mod+Shift+Return exec termite -e tmux 
+workspace_auto_back_and_forth yes
+hide_edge_borders smart
+
+bindsym $mod+t border normal
+bindsym $mod+y border 1pixel
+bindsym $mod+u border none
+
+# Bind shortcuts
+bindsym $mod+Shift+q kill
+bindsym $mod+p exec chromium 
+bindsym $mod+BackSpace exec i3lock -c 000000
+
+bindsym XF86AudioRaiseVolume exec amixer -q sset Master '5%+'
+bindsym XF86AudioLowerVolume exec amixer -q sset  Master '5%-'
+bindsym XF86AudioMute exec amixer set Master toggle
+bindsym XF86AudioPlay exec cmus-remote -p  
+bindsym XF86AudioStop exec cmus-remote -u  
+bindsym XF86AudioPrev exec cmus-remote -r
+bindsym XF86AudioNext exec cmus-remote -n
+
+bindsym Print exec scrot '%F--%I:%M:%S:%p--$wx$h--scrot.png' -e 'mv $f /home/smlb/Pics/screen'
+bindsym $mod+Shift+m exec --no-startup-id termite -t ncmpcpp --command ncmpcpp 
+bindsym $mod+d exec dmenu_run -i -l 5 -p "> " -nb "#202020" -nf "#839496" -sb "#424242" -sf "#839496" -fn "Monospace-9" 
+
+# Scratchpad
+bindsym $mod+Shift+n move scratchpad
+bindsym $mod+n scratchpad show
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+b move absolute position center
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+ograve move right
+
+# System Mode - 
+bindsym $mod+x mode "$mode_system"
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (x) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id ~/.config/i3/i3exit lock, mode "default"
+    bindsym e exec --no-startup-id ~/.config/i3/i3exit logout, mode "default"
+    bindsym s exec --no-startup-id ~/.config/i3/i3exit suspend, mode "default"
+    bindsym h exec --no-startup-id ~/.config/i3/i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id ~/.config/i3/i3exit reboot, mode "default"
+    bindsym x exec --no-startup-id ~/.config/i3/i3exit shutdown, mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Cycle through active workspaces
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+# split in horizontal orientation
+bindsym $mod+o split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+bindsym $mod+c exec --no-startup-id $HOME/bin/quickswitch.py
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+bindsym $mod+q focus child
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 0
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 0
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+mode "resize" {
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym ograve resize grow width 10 px or 10 ppt
+
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+bar {
+        status_command i3status 
+        font pango: Monospace, Icon 10
+        position bottom
+        colors {
+            background #080808 
+            statusline #cccccc
+            separator #808080
+            focused_workspace #080808 #222222 #cccccc
+            active_workspace #080808 #080808 #797979 
+            inactive_workspace #080808 #080808 #4F4F4F
+            urgent_workspace #080808 #080808 #EA4C59
+        }
+}
+
+
+# Startup applications
+exec --no-startup-id feh --bg-fill ~/.config/i3/bgg.jpg 
+exec --no-startup-id chromium 
+exec --no-startup-id xrandr --output DVI-I-1 --mode 1920x1080 --rate 144.00 # Set 144Hz
+exec --no-startup-id telegram-desktop
+exec --no-startup-id pulseaudio --start 
+exec --no-startup-id i3-msg 'workspace 4; exec termite --name weechat -e "ssh pi"' 
+exec --no-startup-id i3-msg 'workspace 2; exec termite --name scratchpad --geometry 1100x700 -e cmus'
+
+# Assign foo to workspaces 
+assign [class="Chromium"] 1
+assign [instance="weechat"] 4
+assign [class="Telegram"] 5
+assign [class="Zathura"] 6
+assign [class="mpv"] 3
+assign [instance="mail"] 5
+
+for_window [class="mpv"] floating enable
+for_window [class="mpv"] border normal
+for_window [window_role="pop-up"] floating enable
+for_window [instance="scratchpad"] floating enable
+for_window [instance="scratchpad"] move window to scratchpad 
+
+# vim: set ft=conf ts=4 sw=4 tw=500 et :
+# vim:filetype=i3

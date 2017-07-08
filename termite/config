@@ -1,0 +1,57 @@
+[options]
+font = Monospace 9 
+allow_bold = true
+resize_grip = false
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = false
+visible_bell = false
+mouse_autohide = false
+dynamic_title = true
+urgent_on_bell = true
+clickable_url = true
+scrollback_lines = 1000
+icon_name = terminal
+transparency = 0.5
+cursor_blink = off
+cursor_shape = block
+scrollback_lines = 10000
+
+[hints]
+padding = 1
+border_width = 2.5
+roundness = 2.0
+
+[colors]
+foreground = #B6C2C3
+background = #121212
+
+# Custom colorscheme, located ~/.config/colors/smlb
+
+highlight = #3E4041
+foreground_bold = #E7F1F2
+
+# black
+color0 = #242424
+color8 = #474747
+# red
+color1 = #b14d4c
+color9 = #e7504e
+# green
+color2 = #438064
+color10 = #4ea272
+# yellow
+color3 = #F0E12B
+color11 = #a6a84e
+# blue
+color4 = #2564C6
+color12 = #597b9e
+# magenta
+color5 = #754e80
+color13 = #8e6e9d
+# cyan
+color6 = #568081
+color14 = #2b6d6e
+# white
+color7 = #cccccc
+color15 = #9eacae
