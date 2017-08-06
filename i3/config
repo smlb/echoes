@@ -28,19 +28,17 @@ bindsym $mod+u border none
 
 # Bind shortcuts
 bindsym $mod+Shift+q kill
-bindsym $mod+p exec chromium 
+bindsym $mod+p exec firefox
 bindsym $mod+BackSpace exec i3lock -c 000000
 
-bindsym XF86AudioRaiseVolume exec amixer -q sset Master '5%+'
-bindsym XF86AudioLowerVolume exec amixer -q sset  Master '5%-'
+bindsym XF86AudioRaiseVolume exec amixer -c 1 -q sset Master '5%+'
+bindsym XF86AudioLowerVolume exec amixer -c 1 -q sset  Master '5%-'
 bindsym XF86AudioMute exec amixer set Master toggle
 bindsym XF86AudioPlay exec cmus-remote -p  
 bindsym XF86AudioStop exec cmus-remote -u  
 bindsym XF86AudioPrev exec cmus-remote -r
 bindsym XF86AudioNext exec cmus-remote -n
 
-bindsym Print exec scrot '%F--%I:%M:%S:%p--$wx$h--scrot.png' -e 'mv $f /home/smlb/Pics/screen'
-bindsym $mod+Shift+m exec --no-startup-id termite -t ncmpcpp --command ncmpcpp 
 bindsym $mod+d exec dmenu_run -i -l 5 -p "> " -nb "#202020" -nf "#839496" -sb "#424242" -sf "#839496" -fn "Monospace-9" 
 
 # Scratchpad
@@ -161,35 +159,35 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bar {
-        status_command i3status 
-        font pango: Monospace, Icon 10
-        position bottom
-        colors {
-            background #080808 
-            statusline #cccccc
-            separator #808080
-            focused_workspace #080808 #222222 #cccccc
-            active_workspace #080808 #080808 #797979 
-            inactive_workspace #080808 #080808 #4F4F4F
-            urgent_workspace #080808 #080808 #EA4C59
-        }
-}
+# bar {
+#        status_command i3status 
+#        font pango: Monospace, Icon 10
+#        position bottom
+#        colors {
+#            background #080808 
+#            statusline #cccccc
+#            separator #808080
+#            focused_workspace #080808 #222222 #cccccc
+#            active_workspace #080808 #080808 #797979 
+#            inactive_workspace #080808 #080808 #4F4F4F
+#            urgent_workspace #080808 #080808 #EA4C59
+#        }
+#}
 
 
 # Startup applications
+exec --no-startup-id $HOME/.config/polybar/polybar.sh
 exec --no-startup-id feh --bg-fill ~/.config/i3/bgg.jpg 
-exec --no-startup-id chromium 
-exec --no-startup-id xrandr --output DVI-I-1 --mode 1920x1080 --rate 144.00 # Set 144Hz
+exec --no-startup-id firefox 
 exec --no-startup-id telegram-desktop
 exec --no-startup-id pulseaudio --start 
 exec --no-startup-id i3-msg 'workspace 4; exec termite --name weechat -e "ssh pi"' 
 exec --no-startup-id i3-msg 'workspace 2; exec termite --name scratchpad --geometry 1100x700 -e cmus'
 
 # Assign foo to workspaces 
-assign [class="Chromium"] 1
+assign [class="Firefox"] 1
 assign [instance="weechat"] 4
-assign [class="Telegram"] 5
+assign [class="Telegram"] 4
 assign [class="Zathura"] 6
 assign [class="mpv"] 3
 assign [instance="mail"] 5

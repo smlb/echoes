@@ -41,4 +41,3 @@ SAVEHIST=$HISTSIZE
 
 PROMPT="%{$fg[blue]%}%n%{$reset_color%}@%{$reset_color%}%m %{$fg_no_bold[white]%}%~ %{$reset_color%}%# "
 
-source $HOME/.zsh/git_prompt.zsh
