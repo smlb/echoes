@@ -1,9 +1,12 @@
 # echoes
 Main workstation dotfiles, running Gentoo Linux. 
 
-* Urxvt 
-* i3 
-* zsh 
-* vim 
-* i3status 
+* ~/.config
+  * i3
+  * i3status
+  * cmus
+  * termite (old config) 
 
+* /etc/
+* /var/
+* ~/bin/
