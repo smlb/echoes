@@ -1,4 +1,9 @@
 # echoes
-Main workstation dotfiles
+Main workstation dotfiles, running Gentoo Linux. 
 
-Differs a lot from the x230 one. 
+* Urxvt 
+* i3 
+* zsh 
+* vim 
+* i3status 
+

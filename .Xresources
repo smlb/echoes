@@ -1,0 +1,40 @@
+#include "/home/smlb/.config/colors/smlb"
+
+URxvt.font:     xft:Monospace:size=9:antialias=true
+URxvt.boldFont: xft:Monospace:bold:size=9:antialias=true
+
+URxvt.scrollstyle: plain
+URxvt.scrollBar: off
+
+URxvt*termName:rxvt-unicode-256color
+URxvt.jumpScroll: false
+URxvt.saveLines: 32
+URxvt.letterSpace: -1 
+URxvt.internalBorder: 13 
+URxvt*loginShell: true
+Xft.autohint: 0
+Xft.dpi: 96
+Xft.rgba: rgb
+Xft.hinting: 1
+Xft.hinstyle: hintslight
+Xft.lcdfilter: lcddefault
+Xft.antialias: 1
+
+*urgentOnBell:     true
+
+URxvt.perl-ext-common: default,matcher,clipboard,url-select,keyboard-select
+URxvt.url-select.launcher: firefox-bin 
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.iso14755: False
+URxvt.matcher.button: 1
+URxvt.colorUL: #2960C7
+URxvt.scrollTtyOutput: false
+URxvt.scrollWithBuffer: true
+URxvt.scrollTtyKeypress: true
+URxvt*secondaryScroll: false
+URxvt*saveLines: 500
+URxvt*keysym.Home: \033[1~
+URxvt*keysym.End: \033[4~
+URxvt.url-select.underline: true
+URxvt.keysym.C-S-0x43: eval:selection_to_clipboard
+URxvt.keysym.C-S-0x56: eval:paste_clipboard
