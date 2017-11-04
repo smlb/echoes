@@ -1,7 +1,6 @@
 HIST_STAMPS="mm/dd/yyyy"
 
-source $HOME/.zsh/alias.zsh
-source $HOME/.zsh/setopt.zsh
+for dot in (~/.zsh/*.zsh) source $dot
 
 autoload -Uz compinit
 compinit
