@@ -6,4 +6,4 @@ Main workstation dotfiles, running Gentoo Linux.
 * /var  : world packages
 * bin/  : scripts 
 
-![img](http://i.imgur.com/LAOFeuQ.png)
+![img](https://raw.githubusercontent.com/smlb/echoes/master/screen.png)
