@@ -1,7 +1,7 @@
 HIST_STAMPS="mm/dd/yyyy"
 
-for dot in (~/.zsh/*.zsh) source $dot
-
+source $HOME/.zsh/*.zsh
+source $HOME/.zsh/autopairs.zsh 
 autoload -Uz compinit
 compinit
 zstyle ':completion:*' menu select
@@ -24,19 +24,30 @@ zle -N down-line-or-beginning-search
 
 export EDITOR=vim
 
-bindkey "^[[H" beginning-of-line
+bindkey -v 
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
-bindkey "^[[F" end-of-line
+bindkey -M vicmd 'k' up-line-or-beginning-search
 bindkey "^[[3~" delete-char
 bindkey "^[[5~" up-line-or-history
 bindkey "^[[6~" down-line-or-history
 bindkey "\e[A" up-line-or-beginning-search
 bindkey "\e[B" down-line-or-beginning-search
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+bindkey "^B" delete-word
 
+eval $(dircolors ~/.dircolors)
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=$HISTSIZE
 
-PROMPT="%{$fg[blue]%}%n%{$reset_color%}@%{$reset_color%}%m %{$fg_no_bold[white]%}%~ %{$reset_color%}%# "
+PROMPT=" %{$fg_bold[blue]%}%~ %{$reset_color%}$ "
 
+#  vim: set ft=zsh ts=4 sw=4 tw=500 et :
